@@ -1,34 +1,49 @@
-<form method="post">
-{% csrf_token %}
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<div class="login-container">
+
+    <form method="post" class="main-login">
+        {% csrf_token %}
 
 
-<div>
-    <label for="{{ form.username.id_for_label }}">Usuario</label><br>
-    <input
-    type="text"
-    name="{{ form.username.name }}"
-    id="{{ form.username.id_for_label }}"
-    value="{{ form.username.value|default_if_none:'' }}"
-    required
-    >
+        <div class="uname">
+            <label for="{{ form.username.id_for_label }}">Usuario</label><br>
+            <input
+            type="text"
+            name="{{ form.username.name }}"
+            id="{{ form.username.id_for_label }}"
+            value="{{ form.username.value|default_if_none:'' }}"
+            required
+            >
+        </div>
+
+        <!-- Campo de contraseña -->
+        <div class="passphrase">
+            <label for="{{ form.password.id_for_label }}">Contraseña</label><br>
+            <input
+            type="password"
+            name="{{ form.password.name }}"
+            id="{{ form.password.id_for_label }}"
+            required
+            >
+        </div>
+
+
+        <input type="hidden" name="next" value="{{ next }}">
+
+        <button type="submit">Entrar</button>
+
+        <a href="{% url 'signup' %}">Registrarse</a>
+    </form>
+
 </div>
 
-<!-- Campo de contraseña -->
-<div style="margin-top: 10px;">
-    <label for="{{ form.password.id_for_label }}">Contraseña</label><br>
-    <input
-    type="password"
-    name="{{ form.password.name }}"
-    id="{{ form.password.id_for_label }}"
-    required
-    >
-</div>
+{% endblock content %}
 
 
-<input type="hidden" name="next" value="{{ next }}">
 
-<button type="submit" style="margin-top: 15px;">Entrar</button>
-
-<a href="{% url 'signup' %}">Registrarse</a>
-</form>
 
