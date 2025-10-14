@@ -1,19 +1,21 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import SignUpForm
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LogoutView
 
-# 🔐 Vista Home protegida
+
 @login_required
 def home_view(request):
-    """
-    Esta vista será la página principal después del login.
-    Solo usuarios autenticados pueden acceder.
-    """
     return render(request, 'home.html')
 
-class MyLogoutView(LogoutView):
-    next_page = 'login'  # a dónde redirigir después del logout
-
-    # Permite que logout funcione con GET
-    def get(self, request, *args, **kwargs):
-        return self.post(request, *args, **kwargs)
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  
+            return redirect('home')  
+    else:
+        form = SignUpForm()
+    return render(request, 'users/signup.html', {'form': form})

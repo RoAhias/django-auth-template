@@ -1,6 +1,7 @@
 # users/urls.py
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
+from .views import signup_view
 
 urlpatterns = [
     path(
@@ -10,9 +11,6 @@ urlpatterns = [
         ),
         name="login",
     ),
-    path(
-        "logout/",
-        LogoutView.as_view(),  # ✅ redirige automáticamente
-        name="logout"
-    ),
+    path("logout/", LogoutView.as_view(), name="logout"),
+    path("signup/", signup_view, name="signup"),
 ]
