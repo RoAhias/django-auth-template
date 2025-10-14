@@ -1,0 +1,11 @@
+  <h1>Bienvenido, {{ user.username }} 👋</h1>
+  <p>Has iniciado sesión correctamente.</p>
+
+    {% if user.is_authenticated %}
+    <form action="{% url "logout" %}" method="post">
+        {% csrf_token %}
+        <button>Cerrar sesion</button>
+    </form>
+    {% else %}
+        <a href="{% url "login" %}">Login</a>
+    {% endif %}
