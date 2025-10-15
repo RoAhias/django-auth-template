@@ -6,30 +6,37 @@
 
 <div class="login-container">
 
-    <form method="post" class="main-login">
+    <form method="post" class="login-form">
         {% csrf_token %}
 
 
-        <div class="uname">
-            <label for="{{ form.username.id_for_label }}">Usuario</label><br>
-            <input
-            type="text"
-            name="{{ form.username.name }}"
-            id="{{ form.username.id_for_label }}"
-            value="{{ form.username.value|default_if_none:'' }}"
-            required
-            >
-        </div>
+        <div class="login-data">
 
-        <!-- Campo de contraseña -->
-        <div class="passphrase">
-            <label for="{{ form.password.id_for_label }}">Contraseña</label><br>
-            <input
-            type="password"
-            name="{{ form.password.name }}"
-            id="{{ form.password.id_for_label }}"
-            required
-            >
+            <div class="login-username">
+                <label for="{{ form.username.id_for_label }}">Usuario</label>
+                <div class="login-data--input">
+                    <input
+                    type="text"
+                    name="{{ form.username.name }}"
+                    id="{{ form.username.id_for_label }}"
+                    value="{{ form.username.value|default_if_none:'' }}"
+                    required
+                    >
+                </div>
+            </div>
+
+            <div class="login-password">
+                <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                <div class="login-data--input">
+                    <input
+                    type="password"
+                    name="{{ form.password.name }}"
+                    id="{{ form.password.id_for_label }}"
+                    required
+                    >
+                </div>
+            </div>
+
         </div>
 
 
