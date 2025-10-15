@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users'
+    'users',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -131,5 +132,13 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/users/login/'
 
 
+#Recuperación de contraseñas
 # Correo de confirmación en consola
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+#Captcha en registro de usuarios
+CAPTCHA_FONT_SIZE = 36
+CAPTCHA_IMAGE_SIZE = (150, 50)
+CAPTCHA_FOREGROUND_COLOR = '#0011CC'
+CAPTCHA_BACKGROUND_COLOR = '#FFFFFF'
