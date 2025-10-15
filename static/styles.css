@@ -101,6 +101,11 @@ main {
     gap: 5px;
 }
 
+.login-password a {
+    font-size: 12px;
+    color: #c0c0c0;
+}
+
 .login-data--input {
     display: flex;
     justify-content: center;
